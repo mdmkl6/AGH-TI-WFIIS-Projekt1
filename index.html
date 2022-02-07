@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Całka</title>
+    <meta name="author" content="Michał Domin">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+
+<body onload="change_tab('content1');">
+    <h1>Wykres i całka dowolnej funkcji:</h1>
+    <nav class="tabs">
+        <ol>
+            <li onclick="change_tab('content1');"><span class="tab">Opis</span></li>
+            <li onclick="change_tab('content2');"><span class="tab">Instrukcja</span></li>
+            <li onclick="change_tab('content3');"><span class="tab">Symulacja</span></li>
+        </ol>
+    </nav>
+    <main>
+        <section class="content_" id="content1">
+            <h2>Opis</h2>
+            Strona została zaprojektowana jako rozwiązanie projektu1 z przedmiotu Techniki Internetowe.<br>
+            Wykorzytsuje ona technologie HTML5 jak i jezyk JavaScript.<br>
+            Funkcjonalność tej strony pozwala na wprowadzenie dowlonej funcji i wyświetlenie jej wykresu lub obliczenie
+            całki w eybranym przedziale.<br>
+            Do obliczenia całki strona korzysta z metody numerycznej zwanej metodą trapezów której działanie w skrucie opiera sie na:<br>
+            Wyznaczeniu trapezów pod funkcyjnych o szerokości zależnej od dokładności i zsumowaniu ich pól.<br>
+            Wiecej na temat tej motedy można sie dowiedzieć na: <a href="https://pl.wikipedia.org/wiki/Wzór_trapezów">Wikipedia-Wzór_Trapezów</a>
+        </section>
+
+        <section class="content_" id="content2">
+            <h2>Instrukcja</h2>
+            <div id="text">
+                1.Strona pozwala na wprowadzenie dowolnej funkcji zawierającej podstawowe operacje mateamtyczne jak:
+                <pre>   +,  -,  *,  /,  ^ </pre>
+                2.Jak i pozwala urzyć też kilku specjalnych funkcji matemtycznych w tej funkcji jak:
+                <pre>   log(...),  sin(...),  cos(...)</pre>
+                Należy pamiętać aby wartości w powyrzszych funkcjach znajdowały się w nawaisach.<br><br>
+                3.Funkcja pozwala urzywać tylko jednej zmiennej i musi nią być x.<br><br>
+                4.Do pul textowych a i b można wpisać dowolne wartości gdzie a&lt;b, liczby te przedstawiają przedział w jakim wyświetlany bedzie wykrses oraz w jakim liczona będzie całka<br><br>
+                5.Pole Dokładność pozwala na wprowadzenie dokładności z jaką liczona bedzie całka jak i wyświetlany wykres można ją wybrać za pomocą slidera lub wpisać bezpośrednio w pole textowe,<br>
+                nalerzy pamiętać iż wartość dokładności znajduje się w przezdziale (0;1).<br><br>
+                6.Przycisk "Narysuj funkcje" wyświetli u dołu strosny wyświetli canvas z automatycznie dobraną wielkości oraz narysuje na nim wykres wybranej funkcji z automatycznie dobraną skalą i osiami.<br><br>
+                7.Przycik "Oblicz całke" obliczy całke $\int_{a}^{b} f(x) \,dx$ wybranej funkcji za pomocą metody trapezów oraz wyświetli jej wartość obok.<br><br>
+                8.W przypadku problemów z działaniem strony nejpenej jest to spowodowne niemożliwą do wyliczenia funkcją albo zbyt dużą wybraną dokładnością.<br>
+                <br><br>
+            </div>
+        </section>
+
+        <section class="content_" id="content3">
+            <div class="vals">
+                <form>
+                    Funkcja:<br>
+                    f(x)=
+                    <input type="text" id="funkcja" name="func" value="x^2">
+                    <div style="clear: both;"></div>
+
+                    Przedział:<br>
+                    a=<input type="text" id="aval" name="func" value="0"><br>
+                    b=<input type="text" id="bval" name="func" value="2">
+                    <div style="clear: both;"></div>
+
+                    <div>
+                        Dokładność:<br>
+                        <input type="range" min="2" max="10000" value="500" id="dokl" onchange="actdok(this.value)"><br>
+                        <input type="text" id="dokval" name="dokval" value="0.002" onchange="setdok(this.value)">
+                        <div style="clear: both;"></div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="vals">
+                <form>
+                    <input class="button" id="rys_fun" type="button" value="Narysuj funkcje" onclick="drow()" /><br>
+                    <input class="button" id="cl_calc" type="button" value="Oblicz całke" onclick="oblcal()" />
+                </form>
+            </div>
+
+            <br>
+            <div id=calka>
+                <h2> $\int_{a}^{b} f(x) \,dx = $ <span id="calval"> </span></h2>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div id="wykres">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2022 Michał Domin, Dziękuje za wizyte!
+    </footer>
+
+</body>
+
+</html>

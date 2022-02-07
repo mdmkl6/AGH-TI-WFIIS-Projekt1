@@ -1,0 +1,89 @@
+body
+{
+	background-color: #141414;
+	color: #dddddd;
+  clear: both;
+}
+
+.vals
+{
+  float: left;
+  margin: 30px;
+  display: block;
+}
+
+#wykres
+{
+  float:left;
+  background-color: #ffffff;
+  width:  98%;
+  height: 100%;
+  margin: 0;
+}
+
+footer
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding: 20px;
+  font-size: 20px;
+}
+
+.calka{
+  float:left;
+  margin-left: 40%;
+	margin-right: auto;
+	text-align: center;
+  padding: 40px;
+  font-size: large;
+  display: block;
+}
+
+section
+{
+  text-align: center;
+}
+
+#text
+{
+  text-align: left;
+}
+
+.tabs
+{ 
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+ol
+{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	display: inline-block;
+  
+}
+
+.tab
+{
+  color: #ffffff;
+	display: block;
+  margin: 5px;
+	padding: 10px;
+	height: 25px;
+  background-color: #494949;
+}
+
+ol > li
+{
+	float: left;
+	width: 150px;
+}
+
+ol > li:hover
+{
+	background-color: #4542fd;
+}
